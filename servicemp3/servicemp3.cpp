@@ -1622,6 +1622,11 @@ int eServiceMP3::getCurrentTrack()
 
 RESULT eServiceMP3::selectTrack(unsigned int i)
 {
+	m_currentAudioStream = getCurrentTrack();
+	if(m_currentAudioStream == (int)i)
+		return m_currentAudioStream;
+	eDebug("[eServiceMP3] selectTrack %d", i);
+
 	bool validposition = false;
 	pts_t ppos = 0;
 	if (getPlayPosition(ppos) >= 0)
